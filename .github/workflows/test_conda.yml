@@ -1,0 +1,23 @@
+name: test Ubuntu
+on: [push, pull_request]
+jobs:
+    test:
+      strategy:
+        matrix:
+          name: [Ubuntu-20.04, Ubuntu-22.04]
+          include:
+            - name: Ubuntu-20.04
+              version: ubuntu-20.04
+              image: ubuntu20
+            - name: Ubuntu-22.04
+              version: ubuntu-22.04
+              image: ubuntu22
+      runs-on: ${{ matrix.version }}
+      container: dcodoni/lib:${{ matrix.image }}
+      steps:
+        - uses: actions/checkout@v3
+        - name: Setup Conda Environment
+          shell: bash
+          run: |
+            python --version
+       
