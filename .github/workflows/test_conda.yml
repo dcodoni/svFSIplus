@@ -16,8 +16,11 @@ jobs:
       container: dcodoni/lib:${{ matrix.image }}
       steps:
         - uses: actions/checkout@v3
-        - name: Setup Conda Environment
-          shell: bash
+        - name: Build svZeroDSolver
           run: |
-            python --version
-       
+            git clone https://github.com/SimVascular/svZeroDSolver.git
+            cd svZeroDSolver
+            mkdir build
+            cd build
+            cmake ..
+            make -j2
