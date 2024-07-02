@@ -223,7 +223,10 @@ const std::set<PreconditionerType> fsils_preconditioners = {
 /// @brief The list of PETSc preconditioners. 
 const std::set<PreconditionerType> petsc_preconditioners = {
   PreconditionerType::PREC_PETSC_JACOBI,
-  PreconditionerType::PREC_PETSC_RCS
+  PreconditionerType::PREC_PETSC_RCS,
+  PreconditionerType::PREC_PETSC_ILUT,
+  PreconditionerType::PREC_PETSC_BLOCK_JACOBI,
+  PreconditionerType::PREC_PETSC_AMG
 };
 
 /// @brief Map for preconditioner type string to PreconditionerType enum
@@ -245,7 +248,10 @@ const std::map<std::string,PreconditionerType> preconditioner_name_to_type =
   {"trilinos-ml", PreconditionerType::PREC_TRILINOS_ML},
 
   {"petsc-jacobi", PreconditionerType::PREC_PETSC_JACOBI},
-  {"petsc-rcs", PreconditionerType::PREC_PETSC_RCS}
+  {"petsc-rcs", PreconditionerType::PREC_PETSC_RCS},
+  {"petsc-ilut", PreconditionerType::PREC_PETSC_ILUT},
+  {"petsc-blockjacobi", PreconditionerType::PREC_PETSC_BLOCK_JACOBI},
+  {"petsc-amg", PreconditionerType::PREC_PETSC_AMG}
 };
 
 /// @brief Map for PreconditionerType enum to a string name.
@@ -262,7 +268,10 @@ const std::map<PreconditionerType, std::string> preconditioner_type_to_name {
   {PreconditionerType::PREC_TRILINOS_IC, "trilinos-ict"}, 
   {PreconditionerType::PREC_TRILINOS_ML, "trilinos-ml"},
   {PreconditionerType::PREC_PETSC_JACOBI, "petsc-jacobi"},
-  {PreconditionerType::PREC_PETSC_RCS, "petsc-rcs"}
+  {PreconditionerType::PREC_PETSC_RCS, "petsc-rcs"},
+  {PreconditionerType::PREC_PETSC_ILUT, "petsc-ilut"},
+  {PreconditionerType::PREC_PETSC_BLOCK_JACOBI, "petsc-blockjacobi"},
+  {PreconditionerType::PREC_PETSC_AMG, "petsc-amg"}
 };
 
 /// @brief Map solver type string to SolverType enum. 

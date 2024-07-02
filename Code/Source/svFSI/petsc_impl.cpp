@@ -218,6 +218,29 @@ void petsc_create_linearsolver(const consts::SolverType lsType, const consts::Pr
             PCSetType(pc, PCJACOBI);
         break;
 
+        case PreconditionerType::PREC_PETSC_BLOCK_JACOBI:
+            PCSetType(pc, PCBJACOBI);
+        break;
+
+        case PreconditionerType::PREC_PETSC_ILUT:
+            PCSetType(pc, PCHYPRE);
+            PCHYPRESetType(pc, "pilut");
+            PetscOptionsSetValue(NULL, "-pc_hypre_pilut_factorrowsize", "100");
+            PetscOptionsSetValue(NULL, "-pc_hypre_pilut_tol", "0.01");
+        break;
+
+        case PreconditionerType::PREC_PETSC_AMG:
+            PCSetType(pc, PCHYPRE);
+            PCHYPRESetType(pc, "boomeramg");
+            PetscOptionsSetValue(NULL, "-pc_hypre_boomeramg_max_levels", "4");
+            // Aggregation & prolongator parameters
+            PetscOptionsSetValue(NULL, "-pc_hypre_boomeramg_agg_nl", "1");  // Number of levels of aggressive coarsening
+            PetscOptionsSetValue(NULL, "-pc_hypre_boomeramg_agg_num_paths", "1");  // Number of paths for aggressive coarsening
+            PetscOptionsSetValue(NULL, "-pc_hypre_boomeramg_coarsen_type", "Falgout");  // Coarsening type
+            // Smoother parameters
+            PetscOptionsSetValue(NULL, "-pc_hypre_boomeramg_relax_type_all", "symmetric-sor/jacobi");  // Relaxation type
+        break;
+
         case PreconditionerType::PREC_PETSC_RCS:
             psol[cEq].rcs = PETSC_TRUE;
             PetscPrintf(MPI_COMM_WORLD, "WARNING <PETSC_CREATE_LINEARSOLVER>: "

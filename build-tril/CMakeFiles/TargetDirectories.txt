@@ -1,0 +1,4 @@
+/Users/dcodoni/research/svFSIplus/build-tril/CMakeFiles/Externals.dir
+/Users/dcodoni/research/svFSIplus/build-tril/CMakeFiles/svFSI.dir
+/Users/dcodoni/research/svFSIplus/build-tril/CMakeFiles/edit_cache.dir
+/Users/dcodoni/research/svFSIplus/build-tril/CMakeFiles/rebuild_cache.dir

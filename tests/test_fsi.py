@@ -12,8 +12,13 @@ def test_pipe_3d(n_proc):
     t_max = 5
     run_with_reference(base_folder, test_folder, fields, n_proc, t_max)
 
-def test_pipe_3d_petsc(n_proc):
-    test_folder = "pipe_3d_petsc"
+def test_pipe_3d_petsc_bj(n_proc):
+    test_folder = "pipe_3d_bj_petsc"
+    t_max = 5
+    run_with_reference(base_folder, test_folder, fields, n_proc, t_max)
+
+def test_pipe_3d_petsc_amg(n_proc):
+    test_folder = "pipe_3d_amg_petsc"
     t_max = 5
     run_with_reference(base_folder, test_folder, fields, n_proc, t_max)
 

@@ -426,7 +426,10 @@ enum class PreconditionerType
   PREC_TRILINOS_ML = 708,
   PREC_RCS = 709,
   PREC_PETSC_JACOBI = 710,
-  PREC_PETSC_RCS = 711
+  PREC_PETSC_RCS = 711,
+  PREC_PETSC_ILUT = 712,
+  PREC_PETSC_BLOCK_JACOBI = 713,
+  PREC_PETSC_AMG = 714
 };
 
 extern const std::set<PreconditionerType> fsils_preconditioners;
