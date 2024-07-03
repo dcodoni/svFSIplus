@@ -232,13 +232,13 @@ void petsc_create_linearsolver(const consts::SolverType lsType, const consts::Pr
         case PreconditionerType::PREC_PETSC_AMG:
             PCSetType(pc, PCHYPRE);
             PCHYPRESetType(pc, "boomeramg");
-            PetscOptionsSetValue(NULL, "-pc_hypre_boomeramg_max_levels", "4");
+            PetscOptionsSetValue(NULL, "-pc_hypre_boomeramg_max_levels", "5");
             // Aggregation & prolongator parameters
-            PetscOptionsSetValue(NULL, "-pc_hypre_boomeramg_agg_nl", "1");  // Number of levels of aggressive coarsening
-            PetscOptionsSetValue(NULL, "-pc_hypre_boomeramg_agg_num_paths", "1");  // Number of paths for aggressive coarsening
+            PetscOptionsSetValue(NULL, "-pc_hypre_boomeramg_agg_nl", "0");  // Number of levels of aggressive coarsening
             PetscOptionsSetValue(NULL, "-pc_hypre_boomeramg_coarsen_type", "Falgout");  // Coarsening type
-            // Smoother parameters
-            PetscOptionsSetValue(NULL, "-pc_hypre_boomeramg_relax_type_all", "symmetric-sor/jacobi");  // Relaxation type
+            PetscOptionsSetValue(NULL, "-pc_hypre_boomeramg_interp_type", "ext+i");  // Interpolation type
+            PetscOptionsSetValue(NULL, "-pc_hypre_boomeramg_strong_threshold", "0.5"); // Strong threshold
+            PetscOptionsSetValue(NULL, "-pc_hypre_boomeramg_relax_type_all", "symmetric-sor/jacobi");  // Relaxation type 
         break;
 
         case PreconditionerType::PREC_PETSC_RCS:
